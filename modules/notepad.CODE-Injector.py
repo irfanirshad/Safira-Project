@@ -2,10 +2,20 @@ import pymem
 import subprocess
 s  # to prevent accidental execution of our program inside our env
 
+
 '''
 A simple application opener and a python code injector
 that we can leverage to our advantage by inserting malicious code
-if we wished to 
+that executes itself on victim's system.
+
+
+
+Pending :: =>
+1) Replace or add a class that takes in the 'cmd.exe' and executes code on it itself thereby essentially
+    giving us a whole shell to work with instead of a boring notepad.
+
+2) Leverage: PowerShell allows us to tap into the system thereby allowing us to inject & save vulnerable
+    libraries and inturn their exploits which will result in us escalating privilegs to hopefully the r00t.
 
 
 '''
@@ -29,3 +39,5 @@ code = """
     win.mainloop()
 
 """
+
+mem.inject_python_shell(code)

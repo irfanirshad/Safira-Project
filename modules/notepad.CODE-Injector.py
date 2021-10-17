@@ -1,7 +1,8 @@
 import pymem
 import subprocess
-s  # to prevent accidental execution of our program inside our env
 
+# to prevent accidental execution of our program inside our env
+s
 
 '''
 A simple application opener and a python code injector

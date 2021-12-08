@@ -1,6 +1,6 @@
 
 
-GARAGE PROJECT: Writing a Windows Malware in Python3 blessed by the dynamic gods...
+GARAGE PROJECT: Writing a Windows Malware in dynamic Python3 blessed by the malware gods...
 
 ~ OBJECTIVE:
 Stage I :: Write a Python malware that is small in size and can compile and execute in an env where

@@ -1,4 +1,10 @@
 
+~Tue Dec 28 06:38:23 IST 2021
+
+//  ARCHIVED | DEPRECATED PROJECT IDEA
+
+
+//Reasoning : A Standard RAT is what you meant to say but couldn't realize the proper terminology associated with the said idea.  Follow up on RCE .
 
 GARAGE PROJECT: Writing a Windows Malware in dynamic Python3 blessed by the malware gods...
 
